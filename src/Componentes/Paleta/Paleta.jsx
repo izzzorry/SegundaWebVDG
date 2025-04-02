@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../Firebase/config";  // Asegúrate de que la ruta sea correcta
-import "./paleta.css"
+import "./Paleta.css"
 function PaletaColores() {
   const [colores, setColores] = useState([]);
   const [loading, setLoading] = useState(true);
