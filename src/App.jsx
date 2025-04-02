@@ -39,7 +39,7 @@ const App = () => {
   };
 
   return (
-    <Router>
+    <Router Router basename="/app">
       <>
         {/* Rutas que agrupan el header, el contenido de la página, y el footer */}
         <Routes>
