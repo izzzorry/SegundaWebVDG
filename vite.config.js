@@ -5,4 +5,8 @@ import react from '@vitejs/plugin-react-swc'
 export default defineConfig({
   base: '/',
   plugins: [react()],
+  build: {
+    outDir: 'dist',
+    target: 'esnext', // Asegúrate de que la compilación sea compatible con los módulos ES
+  },
 })
