@@ -18,12 +18,12 @@ const Header = ({ setLoginModalVisible, handleModalOpen }) => {
         <ul>
           {/* Usamos NavLink para manejar rutas activas */}
           <li>
-            <NavLink to="/" className="active" activeClassName="active">
+            <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : '')}>
               Inicio
             </NavLink>
           </li>
           <li>
-            <NavLink to="/proyecto" className="active" activeClassName="active">
+            <NavLink to="/proyecto" className={({ isActive }) => (isActive ? 'active' : '')}>
               Proyecto
             </NavLink>
           </li>
