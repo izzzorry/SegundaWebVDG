@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router } from "react-router-dom"; // Asegúrate de importar Router
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // Importamos Router, Routes, y Route
 import Login from "./Componentes/Login/login";
 import Header from "./Componentes/Nav/nav";
 import Home from "./Componentes/Home/home";
@@ -7,7 +7,7 @@ import Equipo from "./Componentes/Equipo/equipo";
 import Footer from "./Componentes/Footer/footer";
 import Novedades from "./Componentes/Novedades/novedades";
 import Personajes from "./Componentes/Personajes/Personajes";
-import Crea from "./Componentes/Crear/Crea"; // Asegúrate de importar el componente de creación
+import Crea from "./Componentes/Crear/Crea"; // Importar el componente de creación
 import Tipografia from "./Componentes/Tipo/tipo";
 import PaletaColores from "./Componentes/Paleta/Paleta";
 import HUD from "./Componentes/Hud/hud";
@@ -39,11 +39,31 @@ const App = () => {
   };
 
   return (
-    <Router> {/* Asegúrate de envolver todo dentro de Router */}
+    <Router>
       <>
-        <Header setLoginModalVisible={setLoginModalVisible} handleModalOpen={handleModalOpen} />
+        {/* Rutas que agrupan el header, el contenido de la página, y el footer */}
+        <Routes>
+          {/* Ruta para la página principal */}
+          <Route path="/" element={<>
+            <Header setLoginModalVisible={setLoginModalVisible} handleModalOpen={handleModalOpen} />
+            <Home />
+            <Equipo />
+            <Footer />
+          </>} />
 
-        {/* Mostrar el modal de login */}
+          {/* Ruta para el proyecto */}
+          <Route path="/proyecto" element={<>
+            <Header setLoginModalVisible={setLoginModalVisible} handleModalOpen={handleModalOpen} />
+            <Novedades handleModalOpen={handleModalOpen} />
+            <Personajes handleModalOpen={handleModalOpen} />
+            <Tipografia />
+            <PaletaColores />
+            <HUD />
+            <Footer />
+          </>} />
+        </Routes>
+
+        {/* Mostrar el modal de login en ambas rutas */}
         {loginModalVisible && (
           <Login setLoginModalVisible={setLoginModalVisible} handleClose={handleLoginModalClose} />
         )}
@@ -56,18 +76,8 @@ const App = () => {
             handleClose={handleModalClose} 
           />
         )}
-
-        {/* Resto de los componentes de la aplicación */}
-        <Home />
-        <Equipo />
-        <Footer />
-        <Novedades handleModalOpen={handleModalOpen} />
-        <Personajes handleModalOpen={handleModalOpen} />
-        <Tipografia/>
-        <PaletaColores/>
-        <HUD/>
       </>
-    </Router> 
+    </Router>
   );
 };
 

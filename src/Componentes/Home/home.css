@@ -60,6 +60,9 @@ html{
     flex-wrap: wrap;
     
 }
+.project-content p{
+    color: #666;
+}
 .box-container .box{
     height: 30rem;
     width: 35rem ;

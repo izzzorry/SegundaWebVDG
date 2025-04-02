@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../Firebase/config";  // Asegúrate de que la ruta sea correcta
-
+import "./hud.css"
 function HUD() {
   const [hudElements, setHudElements] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -38,6 +38,7 @@ function HUD() {
         {hudElements.map((element) => (
           <div key={element.id} className="hud-card">
             <h2>{element.Nombre}</h2>
+            <img src={element.imagen} alt={element.imagen} />
             <p><strong>Descripción:</strong> {element.Desc}</p>
             <p><strong>Función:</strong> {element.Info?.Función}</p>
             <p><strong>Tipo:</strong> {element.Info?.Tipo}</p>
